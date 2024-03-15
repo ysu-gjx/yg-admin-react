@@ -2,11 +2,16 @@ import { createBrowserRouter, Outlet, useLoaderData, Navigate } from 'react-rout
 import Welcome from '@/views/Welcome'
 import Error404 from '@/views/404'
 import Error403 from '@/views/403'
+import Login from '@/views/login'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Welcome />
+  },
+  {
+    path: '/login',
+    element: <Login />
   },
   {
     path: '/403',

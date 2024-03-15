@@ -1,0 +1,25 @@
+.login {
+  height: 100vh;
+  background: url(/imgs/login_bg.jpeg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  :global(.title) {
+    line-height: 1.5;
+    font-size: 42px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  // :global(.ant-btn-primary) {
+  //   background-color: red;
+  // }
+}
+
+.loginWrapper {
+  position: absolute;
+  right: 10%;
+  width: 500px;
+  background-color: #fff;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 50px;
+}

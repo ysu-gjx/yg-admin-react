@@ -3,7 +3,10 @@ import request from '@/utils/request'
 const Welcome = () => {
   useEffect(() => {
     request
-      .post('/user3', { id: 1234 })
+      .post('/users/login', {
+        userName: 'JackMa',
+        userPwd: '123456'
+      })
       .then(res => {
         console.log('res', res)
       })

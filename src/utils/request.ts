@@ -21,7 +21,7 @@ instance.interceptors.request.use(
     if (config.showLoading) startLoading()
     const token = storage.get('token')
     if (token) {
-      config.headers.Authorization = 'Token::' + token
+      config.headers.Authorization = 'Bearer ' + token
     }
     if (env.mock) {
       config.baseURL = env.mockApi // mock数据

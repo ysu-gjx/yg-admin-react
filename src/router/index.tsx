@@ -1,13 +1,23 @@
-import { createBrowserRouter, Outlet, useLoaderData, Navigate } from 'react-router-dom'
-import Welcome from '@/views/Welcome'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
+import Welcome from '@/views/welcome'
 import Error404 from '@/views/404'
 import Error403 from '@/views/403'
 import Login from '@/views/login'
+import Layout from '@/layout'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Welcome />
+    element: <Navigate to='/welcome' />
+  },
+  {
+    element: <Layout />,
+    children: [
+      {
+        path: '/welcome',
+        element: <Welcome />
+      }
+    ]
   },
   {
     path: '/login',

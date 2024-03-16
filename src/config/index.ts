@@ -23,8 +23,8 @@ const config = {
     uploadApi: 'http://api-driver-dev.marsview.cc',
     cdn: 'http://xxx.aliyun.com',
     mock: true,
-    mockApi: '/'
-    // mockApi: 'https://mock.apifox.com/m1/4166690-0-default/'
+    // mockApi: '/'
+    mockApi: 'https://mock.apifox.com/m1/4166690-0-default/'
   },
   stg: {
     baseApi: '/api',

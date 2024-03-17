@@ -6,7 +6,7 @@ import { useStore } from '@/store'
 import storage from '@/utils/storage'
 
 const NavHeader = () => {
-  const userInfo = useStore(state => state.userInfo)
+  const { userInfo, collapsed, updateCollapsed } = useStore()
   const breadcrumbList = [
     {
       title: '首页'
@@ -32,10 +32,17 @@ const NavHeader = () => {
       location.href = '/login?callback=' + encodeURIComponent(location.href)
     }
   }
+
+  const toggleCollapsed = () => {
+    updateCollapsed()
+  }
   return (
     <div className={styles.navHeader}>
       <div className={styles.left}>
-        <MenuFoldOutlined style={{ marginRight: 10 }} />
+        <div className={styles.collapsed} onClick={toggleCollapsed}>
+          {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </div>
+
         <Breadcrumb items={breadcrumbList} />
       </div>
       <div className={styles.right}>

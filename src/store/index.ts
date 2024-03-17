@@ -4,11 +4,13 @@ import { User } from '@/types/api'
 type State = {
   token: string
   userInfo: User.UserItem
+  collapsed: boolean
 }
 
 type Action = {
   updateToken: (token: State['token']) => void
   updateUserInfo: (userInfo: State['userInfo']) => void
+  updateCollapsed: () => void
 }
 
 export const useStore = create<State & Action>(set => ({
@@ -28,6 +30,8 @@ export const useStore = create<State & Action>(set => ({
     deptName: '',
     userImg: ''
   },
+  collapsed: false,
   updateToken: token => set(() => ({ token })),
-  updateUserInfo: userInfo => set(() => ({ userInfo }))
+  updateUserInfo: userInfo => set(() => ({ userInfo })),
+  updateCollapsed: () => set(state => ({ collapsed: !state.collapsed }))
 }))

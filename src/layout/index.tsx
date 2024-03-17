@@ -6,19 +6,17 @@ import NavFooter from '@/components/NavFooter'
 import Menu from '@/components/Menu'
 import styles from './index.module.scss'
 import api from '@/api'
-import storage from '@/utils/storage'
 import { useStore } from '@/store'
 
 const { Content, Sider } = Layout
 
 const App: React.FC = () => {
   const updateUserInfo = useStore(state => state.updateUserInfo)
-  const [collapsed, setCollapsed] = useState(false)
+  const collapsed = useStore(state => state.collapsed)
 
   const getUserInfo = async () => {
     const userInfo = await api.getUserInfo()
     console.log(userInfo)
-    // storage.set('userInfo', userInfo)
     updateUserInfo(userInfo)
   }
 

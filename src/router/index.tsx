@@ -5,6 +5,7 @@ import Error403 from '@/views/403'
 import Login from '@/views/login'
 import Layout from '@/layout'
 import Dashboard from '@/views/dashboard'
+import User from '@/views/system/user'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard',
         element: <Dashboard />
+      },
+      {
+        path: '/userList',
+        element: <User />
       }
     ]
   },

@@ -34,7 +34,12 @@ const LoginFC = () => {
     <div className={styles.login}>
       <div className={styles.loginWrapper}>
         <div className='title'>系统登陆</div>
-        <Form name='normal_login' className='login-form' initialValues={{ remember: true }} onFinish={onFinish}>
+        <Form
+          name='normal_login'
+          className='login-form'
+          initialValues={{ userName: 'admin', userPwd: '123456' }}
+          onFinish={onFinish}
+        >
           <Form.Item name='userName' rules={[{ required: true, message: 'Please input your Username!' }]}>
             <Input prefix={<UserOutlined className='site-form-item-icon' />} placeholder='Username' />
           </Form.Item>

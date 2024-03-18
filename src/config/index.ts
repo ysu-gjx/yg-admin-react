@@ -18,13 +18,13 @@ if (host.indexOf('localhost') > -1) {
 
 const config = {
   dev: {
-    // baseApi: '/api',
-    baseApi: '',
+    baseApi: '/api',
+    // baseApi: '',
     uploadApi: 'http://api-driver-dev.marsview.cc',
     cdn: 'http://xxx.aliyun.com',
     mock: true,
     // mockApi: '/'
-    mockApi: 'https://mock.apifox.com/m1/4166690-0-default/'
+    mockApi: 'https://mock.apifox.com/m1/4166690-0-default'
   },
   stg: {
     baseApi: '/api',

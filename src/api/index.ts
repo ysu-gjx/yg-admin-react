@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 import { Login, User, Dashboard, ResultData, Dept, Menu } from '@/types/api'
-import '@/_mock/users'
+// import '@/_mock/users'
 import '@/_mock/index'
 import '@/_mock/dashboard'
 

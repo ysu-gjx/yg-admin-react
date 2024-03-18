@@ -1,8 +1,9 @@
 import { User } from '@/types/api'
+
 export type IAction = 'create' | 'edit' | 'delete'
 
-export interface IModalRef {
-  open: (action: IAction, data?: User.UserItem) => void
+export interface IModalRef<T = User.UserItem> {
+  open: (action: IAction, data?: T) => void
 }
 export interface IModalProp {
   // mRef: MutableRefObject<

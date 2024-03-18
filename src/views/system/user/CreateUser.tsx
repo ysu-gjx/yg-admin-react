@@ -91,7 +91,7 @@ const CreateUser = forwardRef<IModalRef, IModalProp>((props, ref) => {
   }
   return (
     <Modal
-      title='创建用户'
+      title={action === 'create' ? '创建用户' : '编辑用户'}
       okText='确认'
       cancelText='取消'
       width={800}

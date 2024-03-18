@@ -26,6 +26,11 @@ const SideMenu: FC<SideMenuProps> = ({ collapsed }) => {
           label: '用户列表',
           key: '3',
           icon: <UserOutlined />
+        },
+        {
+          label: '部门列表',
+          key: '4',
+          icon: <UserOutlined />
         }
       ]
     }

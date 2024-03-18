@@ -6,6 +6,7 @@ import Login from '@/views/login'
 import Layout from '@/layout'
 import Dashboard from '@/views/dashboard'
 import User from '@/views/system/user'
+import Dept from '@/views/system/dept'
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/userList',
         element: <User />
+      },
+      {
+        path: '/deptList',
+        element: <Dept />
       }
     ]
   },

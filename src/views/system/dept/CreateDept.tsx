@@ -49,7 +49,7 @@ const CreateDept = forwardRef<IModalRef<Dept.DeptItem>, IModalProp>((props, ref)
         ...form.getFieldsValue()
       }
       if (action === 'create') {
-        api.createDept(params)
+        await api.createDept(params)
         message.success('创建成功')
       } else {
         await api.editDept(params)

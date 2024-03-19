@@ -45,7 +45,7 @@ const CreateUser = forwardRef<IModalRef, IModalProp>((props, ref) => {
         userImg: img
       }
       if (action === 'create') {
-        api.createUser(params)
+        await api.createUser(params)
         message.success('创建成功')
       } else {
         await api.editUser(params)

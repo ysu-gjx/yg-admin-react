@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Layout, Watermark } from 'antd'
 import { Outlet } from 'react-router-dom'
 import NavHeader from '@/components/NavHeader'
@@ -16,7 +16,6 @@ const App: React.FC = () => {
 
   const getUserInfo = async () => {
     const userInfo = await api.getUserInfo()
-    console.log(userInfo)
     updateUserInfo(userInfo)
   }
 

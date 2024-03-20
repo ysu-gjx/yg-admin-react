@@ -14,3 +14,7 @@ export interface IModalProp {
   // >
   update: () => void
 }
+
+export interface IDetailProp {
+  open: (orderId?: string) => void
+}

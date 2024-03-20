@@ -29,7 +29,6 @@ const App: React.FC = () => {
   }, [])
 
   // 权限判断
-  console.log(originMenuList)
   const route = searchRoute(pathname, routes)
   if (route && route.meta?.auth === false) {
     // 继续执行

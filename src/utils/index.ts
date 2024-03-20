@@ -86,3 +86,10 @@ export const searchRoute: any = (targetPath: string, routes: RouteObject[]) => {
 
   return ''
 }
+
+// 手机号加密
+export const formateMobile = (mobile?: string | number) => {
+  if (!mobile) return '-'
+  const phone = mobile.toString()
+  return phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
+}

@@ -8,6 +8,7 @@ import { IModalRef } from '@/types/modal'
 import CreateUser from './CreateUser'
 import { modal, message } from '@/utils/GlobalAntd'
 import { useAntdTable } from 'ahooks'
+import AuthButton from '@/components/AuthButton'
 
 const getTableData = ({ current, pageSize }: { current: number; pageSize: number }, formData: User.Params) => {
   return api
@@ -180,9 +181,9 @@ const UserFC = () => {
         <div className='header-wrapper'>
           <div className='title'>用户列表</div>
           <div className='action'>
-            <Button type='primary' onClick={handleCreate}>
+            <AuthButton type='primary' auth='user@create' onClick={handleCreate}>
               新增
-            </Button>
+            </AuthButton>
             <Button type='primary' danger onClick={handlePatchConfirm}>
               批量删除
             </Button>

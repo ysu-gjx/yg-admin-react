@@ -3,6 +3,7 @@
  */
 
 import { Menu } from '@/types/api'
+import type { RouteObject } from 'react-router-dom'
 
 // 格式化金额
 export const formatMoney = (num?: number | string) => {
@@ -70,4 +71,18 @@ export const getMenuPath = (list: Menu.MenuItem[]): string[] => {
   return list.reduce((result: string[], item: Menu.MenuItem) => {
     return result.concat(Array.isArray(item.children) && !item.buttons ? getMenuPath(item.children) : item.path + '')
   }, [])
+}
+
+// 递归获取路由对象
+export const searchRoute: any = (targetPath: string, routes: RouteObject[]) => {
+  for (const route of routes) {
+    if (route.path === targetPath) {
+      return route
+    }
+    if (route.children && route.children.length) {
+      return searchRoute(targetPath, route.children)
+    }
+  }
+
+  return ''
 }

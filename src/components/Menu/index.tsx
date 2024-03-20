@@ -5,6 +5,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { useLocation, useNavigate, useRouteLoaderData } from 'react-router-dom'
 import { Menu as IMenu } from '@/types/api'
 import * as Icons from '@ant-design/icons'
+import { IAuthLoader } from '@/router/AuthLoader'
 
 interface SideMenuProps {
   collapsed: boolean
@@ -51,7 +52,7 @@ const getTreeMenu = (list: IMenu.MenuItem[], treeList: MenuItem[] = []) => {
 
 const SideMenu: FC<SideMenuProps> = ({ collapsed }) => {
   const navigate = useNavigate()
-  const originMenuList: any = useRouteLoaderData('layout')
+  const originMenuList = useRouteLoaderData('layout') as IAuthLoader
   const [menuList, setMenuList] = useState<MenuItem[]>([])
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
   const { pathname } = useLocation()

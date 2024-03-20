@@ -135,7 +135,7 @@ const DeptList = () => {
             </Button>
           </div>
         </div>
-        <Table bordered rowKey='_id' dataSource={data} columns={columns} />
+        <Table bordered rowKey='_id' dataSource={data} columns={columns} pagination={false} />
       </div>
 
       <CreateDept ref={deptRef} update={getDeptList} />

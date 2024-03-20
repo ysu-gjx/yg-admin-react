@@ -8,10 +8,11 @@ import Dashboard from '@/views/dashboard'
 import User from '@/views/system/user'
 import Dept from '@/views/system/dept'
 import Menu from '@/views/system/menu'
+import Role from '@/views/system/role'
 
 import AuthLoader from './AuthLoader'
 
-const router = createBrowserRouter([
+export const routes = [
   {
     path: '/',
     element: <Navigate to='/welcome' />
@@ -23,7 +24,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/welcome',
-        element: <Welcome />
+        element: <Welcome />,
+        meta: {
+          auth: false
+        }
       },
       {
         path: '/dashboard',
@@ -36,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: '/menuList',
         element: <Menu />
+      },
+      {
+        path: '/roleList',
+        element: <Role />
       },
       {
         path: '/deptList',
@@ -59,6 +67,6 @@ const router = createBrowserRouter([
     path: '*',
     element: <Navigate to='/404' />
   }
-])
+]
 
-export default router
+export default createBrowserRouter(routes)

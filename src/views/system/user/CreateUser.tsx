@@ -1,13 +1,14 @@
-import { Modal, Form, Input, Select, Upload } from 'antd'
+import { Modal, Form, Input, Select, Upload, TreeSelect } from 'antd'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
 import { message } from '@/utils/GlobalAntd'
-import { useState, useImperativeHandle, forwardRef } from 'react'
+import { useState, useImperativeHandle, forwardRef, useEffect } from 'react'
 import type { GetProp, UploadProps } from 'antd'
 import storage from '@/utils/storage'
 import env from '@/config'
 import { IModalProp, IAction, IModalRef } from '@/types/modal'
-import { User } from '@/types/api'
+import { Dept, Role, User } from '@/types/api'
 import api from '@/api'
+import roleApi from '@/api/roleApi'
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0]
 
@@ -17,6 +18,8 @@ const CreateUser = forwardRef<IModalRef, IModalProp>((props, ref) => {
   const [loading, setLoading] = useState(false)
   const [img, setImg] = useState('')
   const [form] = Form.useForm()
+  const [deptList, setDeptList] = useState<Dept.DeptItem[]>([])
+  const [roleList, setRoleList] = useState<Role.RoleItem[]>([])
 
   // 调用弹窗显示方法
   const open = (type: IAction, data?: User.UserItem) => {
@@ -36,6 +39,21 @@ const CreateUser = forwardRef<IModalRef, IModalProp>((props, ref) => {
     }),
     []
   )
+
+  const getDeptList = async () => {
+    const res = await api.getDeptList()
+    setDeptList(res)
+  }
+  const getAllUserList = async () => {
+    const res = await roleApi.getAllRoleList()
+    setRoleList(res)
+  }
+
+  useEffect(() => {
+    if (!visible) return
+    getDeptList()
+    getAllUserList()
+  }, [visible])
 
   const handleOk = async () => {
     const valid = await form.validateFields()
@@ -144,7 +162,14 @@ const CreateUser = forwardRef<IModalRef, IModalProp>((props, ref) => {
             }
           ]}
         >
-          <Input />
+          <TreeSelect
+            placeholder='请选择部门'
+            allowClear
+            treeDefaultExpandAll
+            showCheckedStrategy={TreeSelect.SHOW_ALL}
+            fieldNames={{ label: 'deptName', value: '_id' }}
+            treeData={deptList}
+          />
         </Form.Item>
         <Form.Item label='岗位' name='job'>
           <Input placeholder='请输入岗位'></Input>
@@ -157,7 +182,15 @@ const CreateUser = forwardRef<IModalRef, IModalProp>((props, ref) => {
           </Select>
         </Form.Item>
         <Form.Item label='角色' name='roleList'>
-          <Input></Input>
+          <Select placeholder='请选择角色'>
+            {roleList.map(item => {
+              return (
+                <Select.Option value={item._id} key={item._id}>
+                  {item.roleName}
+                </Select.Option>
+              )
+            })}
+          </Select>
         </Form.Item>
         <Form.Item label='用户头像'>
           <Upload

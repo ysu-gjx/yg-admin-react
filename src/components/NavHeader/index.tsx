@@ -1,20 +1,14 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons'
 import styles from './index.module.scss'
-import { Breadcrumb, Switch, Dropdown } from 'antd'
+import { Switch, Dropdown } from 'antd'
 import type { MenuProps } from 'antd'
 import { useStore } from '@/store'
 import storage from '@/utils/storage'
+import Breadcrumb from './Breadcrumb'
 
 const NavHeader = () => {
   const { userInfo, collapsed, updateCollapsed } = useStore()
-  const breadcrumbList = [
-    {
-      title: '首页'
-    },
-    {
-      title: '工作台'
-    }
-  ]
+
   const menuList: MenuProps['items'] = [
     {
       key: 'email',
@@ -43,7 +37,7 @@ const NavHeader = () => {
           {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </div>
 
-        <Breadcrumb items={breadcrumbList} />
+        <Breadcrumb />
       </div>
       <div className={styles.right}>
         <Switch checkedChildren='暗黑' unCheckedChildren='默认' style={{ marginRight: 10 }} />

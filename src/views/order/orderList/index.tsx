@@ -8,11 +8,15 @@ import { IDetailProp } from '@/types/modal'
 import { message, modal } from '@/utils/GlobalAntd'
 import CreateOrder from './components/CreateOrder'
 import OrderDetail from './components/OrderDetail'
+import OrderMarker from './components/OrderMarker'
+import OrderRoute from './components/OrderRoute'
 
 const OrderList = () => {
   const [form] = Form.useForm()
   const orderRef = useRef<IDetailProp>(null)
   const detailRef = useRef<IDetailProp>(null)
+  const markerRef = useRef<IDetailProp>(null)
+  const routeRef = useRef<IDetailProp>(null)
 
   const getTableData = ({ current, pageSize }: { current: number; pageSize: number }, formData: Order.SearchParams) => {
     return api
@@ -127,9 +131,29 @@ const OrderList = () => {
   const handleDetail = (id: string) => {
     detailRef.current?.open(id)
   }
-  const handleMarker = (id: string) => {}
-  const handleRoute = (id: string) => {}
-  const handleDel = (_id: string) => {}
+  const handleMarker = (id: string) => {
+    markerRef.current?.open(id)
+  }
+  const handleRoute = (id: string) => {
+    routeRef.current?.open(id)
+  }
+  const handleDel = (_id: string) => {
+    modal.confirm({
+      title: '确认',
+      okText: '确定',
+      cancelText: '取消',
+      content: <span>确认删除订单吗?</span>,
+      onOk: async () => {
+        await api.delOrder(_id)
+        message.success('删除成功!')
+        search.submit()
+      }
+    })
+  }
+
+  const handleExport = () => {
+    api.exportData(form.getFieldsValue())
+  }
 
   return (
     <div className='order-list'>
@@ -167,6 +191,9 @@ const OrderList = () => {
             <Button type='primary' onClick={handleCreate}>
               新增
             </Button>
+            <Button type='primary' onClick={handleExport}>
+              导出
+            </Button>
           </div>
         </div>
 
@@ -176,6 +203,8 @@ const OrderList = () => {
       {/* 创建订单 */}
       <CreateOrder ref={orderRef} update={search.submit} />
       <OrderDetail ref={detailRef} />
+      <OrderMarker ref={markerRef} />
+      <OrderRoute ref={routeRef} />
     </div>
   )
 }

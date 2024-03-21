@@ -32,14 +32,14 @@ export default {
     return request.post('/order/delete', { _id: orderId })
   },
   exportData(params: Order.SearchParams) {
-    // return request.downloadFile('/order/orderExport', params, '订单列表.xlsx')
+    return request.downloadFile('/order/orderExport', params, '订单列表.xlsx')
   },
   // 获取城市聚合点数据
   getCityData(cityId: number) {
     return request.get<Array<{ lng: string; lat: string }>>(`/order/cluster/${cityId}`)
   },
   // 获取司机列表
-  getDrvierList(params: Order.DriverParams) {
+  getDriverList(params: Order.DriverParams) {
     return request.get<ResultData<Order.DriverItem>>('/order/driver/list', params)
   }
 }

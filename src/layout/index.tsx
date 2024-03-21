@@ -10,6 +10,7 @@ import { useStore } from '@/store'
 import { IAuthLoader } from '@/router/AuthLoader'
 import { searchRoute } from '@/utils'
 import { routes } from '@/router'
+import TabsFC from '@/components/Tabs'
 
 const { Content, Sider } = Layout
 
@@ -47,6 +48,7 @@ const App: React.FC = () => {
         </Sider>
         <Layout>
           <NavHeader />
+          <TabsFC />
           <Content className={styles.content}>
             <div className={styles.wrapper}>
               <Outlet />

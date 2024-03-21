@@ -74,13 +74,14 @@ export const getMenuPath = (list: Menu.MenuItem[]): string[] => {
 }
 
 // 递归获取路由对象
-export const searchRoute: any = (targetPath: string, routes: RouteObject[]) => {
+export const searchRoute: any = (targetPath: string, routes: (RouteObject | Menu.MenuItem)[]) => {
   for (const route of routes) {
     if (route.path === targetPath) {
       return route
     }
     if (route.children && route.children.length) {
-      return searchRoute(targetPath, route.children)
+      const result = searchRoute(targetPath, route.children)
+      if (result) return result
     }
   }
 
@@ -92,4 +93,19 @@ export const formateMobile = (mobile?: string | number) => {
   if (!mobile) return '-'
   const phone = mobile.toString()
   return phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
+}
+
+// 递归查找树的路径
+export const findTreeNode = (tree: Menu.MenuItem[], pathName: string, path: string[] = []): string[] => {
+  if (!tree) return []
+  for (const data of tree) {
+    path.push(data.menuName)
+    if (data.path === pathName) return path
+    if (data.children?.length) {
+      const list = findTreeNode(data.children, pathName, path)
+      if (list?.length) return list
+    }
+    path.pop()
+  }
+  return []
 }

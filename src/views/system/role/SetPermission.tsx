@@ -1,7 +1,7 @@
 import { Modal, Form, Tree } from 'antd'
 import { useState, forwardRef, useImperativeHandle, useEffect } from 'react'
 import { IModalRef, IModalProp, IAction } from '@/types/modal'
-import { message } from '@/utils/GlobalAntd'
+import { message } from '@/utils/AntdGlobal'
 import { Role, Menu } from '@/types/api'
 import roleApi from '@/api/roleApi'
 import api from '@/api'

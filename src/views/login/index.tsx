@@ -4,7 +4,7 @@ import styles from './index.module.scss'
 import api from '@/api'
 import { Login } from '@/types/api'
 import storage from '@/utils/storage'
-import { message } from '@/utils/GlobalAntd'
+import { message } from '@/utils/AntdGlobal'
 import { useState } from 'react'
 import { useStore } from '@/store'
 

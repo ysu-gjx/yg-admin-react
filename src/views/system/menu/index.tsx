@@ -5,7 +5,7 @@ import { Menu } from '@/types/api'
 import api from '@/api'
 import { formatDate } from '@/utils'
 import { IModalRef } from '@/types/modal'
-import { message, modal } from '@/utils/GlobalAntd'
+import { message, modal } from '@/utils/AntdGlobal'
 import CreateMenu from './CreateMenu'
 
 const MenuList = () => {

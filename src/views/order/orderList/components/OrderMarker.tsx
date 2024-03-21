@@ -3,7 +3,7 @@ import { useImperativeHandle, useState, forwardRef } from 'react'
 import { IDetailProp } from '@/types/modal'
 import orderApi from '@/api/orderApi'
 import { Order } from '@/types/api'
-import { message } from '@/utils/GlobalAntd'
+import { message } from '@/utils/AntdGlobal'
 
 type MarkerType = { lng: string; lat: string }
 

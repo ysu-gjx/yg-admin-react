@@ -3,7 +3,7 @@ import { startLoading, hideLoading } from './loading'
 import env from '@/config'
 import { Result } from '@/types/api'
 import storage from './storage'
-import { message } from './GlobalAntd'
+import { message } from './AntdGlobal'
 
 const instance = axios.create({
   baseURL: env.baseApi,

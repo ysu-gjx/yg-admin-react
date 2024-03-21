@@ -1,7 +1,7 @@
 import { Modal, Form, Input, Select, TreeSelect } from 'antd'
 import { useEffect, useState, forwardRef, useImperativeHandle } from 'react'
 import { IModalRef, IModalProp, IAction } from '@/types/modal'
-import { message } from '@/utils/GlobalAntd'
+import { message } from '@/utils/AntdGlobal'
 import { Dept, User } from '@/types/api'
 import api from '@/api'
 

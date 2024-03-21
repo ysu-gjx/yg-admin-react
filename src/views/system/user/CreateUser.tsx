@@ -1,6 +1,6 @@
 import { Modal, Form, Input, Select, Upload, TreeSelect } from 'antd'
 import { LoadingOutlined, PlusOutlined } from '@ant-design/icons'
-import { message } from '@/utils/GlobalAntd'
+import { message } from '@/utils/AntdGlobal'
 import { useState, useImperativeHandle, forwardRef, useEffect } from 'react'
 import type { GetProp, UploadProps } from 'antd'
 import storage from '@/utils/storage'

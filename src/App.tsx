@@ -1,6 +1,6 @@
 import { RouterProvider } from 'react-router-dom'
 import { ConfigProvider, App as AntdApp } from 'antd'
-import GlobalAntd from '@/utils/GlobalAntd'
+import GlobalAntd from '@/utils/AntdGlobal'
 import router from '@/router'
 
 import './App.scss'

@@ -6,7 +6,7 @@ import { useAntdTable } from 'ahooks'
 import api from '@/api/roleApi'
 import CreateRole from './CreateRole'
 import { IModalRef } from '@/types/modal'
-import { message, modal } from '@/utils/GlobalAntd'
+import { message, modal } from '@/utils/AntdGlobal'
 import SetPermission from './SetPermission'
 
 const RoleList = () => {

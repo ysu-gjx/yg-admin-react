@@ -1,7 +1,7 @@
 import { Modal, Form, Input, Row, Col, DatePicker, Select } from 'antd'
 import { useState, forwardRef, useImperativeHandle, useEffect } from 'react'
 import { IDetailProp, IModalProp } from '@/types/modal'
-import { message } from '@/utils/GlobalAntd'
+import { message } from '@/utils/AntdGlobal'
 import { Order } from '@/types/api'
 import api from '@/api/orderApi'
 

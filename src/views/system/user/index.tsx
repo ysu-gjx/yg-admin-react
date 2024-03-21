@@ -6,9 +6,10 @@ import { useState, useRef } from 'react'
 import api from '@/api'
 import { IModalRef } from '@/types/modal'
 import CreateUser from './CreateUser'
-import { modal, message } from '@/utils/GlobalAntd'
+import { modal, message } from '@/utils/AntdGlobal'
 import { useAntdTable } from 'ahooks'
 import AuthButton from '@/components/AuthButton'
+import SearchForm from '@/components/SearchForm'
 
 const getTableData = ({ current, pageSize }: { current: number; pageSize: number }, formData: User.Params) => {
   return api
@@ -150,7 +151,7 @@ const UserFC = () => {
 
   return (
     <div className='user-list'>
-      <Form className='search-form' layout='inline' form={form} initialValues={{ state: 1 }}>
+      <SearchForm form={form} initialValues={{ state: 1 }} submit={search.submit} reset={search.reset}>
         <Form.Item name='userId' label='用户ID'>
           <Input placeholder='请输入用户ID' />
         </Form.Item>
@@ -165,17 +166,7 @@ const UserFC = () => {
             <Select.Option value={3}>试用期</Select.Option>
           </Select>
         </Form.Item>
-        <Form.Item>
-          <Space>
-            <Button type='primary' onClick={search.submit}>
-              搜索
-            </Button>
-            <Button type='default' onClick={search.reset}>
-              重置
-            </Button>
-          </Space>
-        </Form.Item>
-      </Form>
+      </SearchForm>
 
       <div className='base-table'>
         <div className='header-wrapper'>

@@ -6,7 +6,7 @@ import api from '@/api'
 import { formatDate } from '@/utils'
 import CreateDept from './CreateDept'
 import { IModalRef } from '@/types/modal'
-import { message, modal } from '@/utils/GlobalAntd'
+import { message, modal } from '@/utils/AntdGlobal'
 
 const DeptList = () => {
   const [form] = Form.useForm()

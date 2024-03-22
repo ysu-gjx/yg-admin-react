@@ -30,14 +30,14 @@ const config = {
     baseApi: '/api',
     uploadApi: 'http://api-driver-stg.marsview.cc',
     cdn: 'http://xxx.aliyun.com',
-    mock: false,
+    mock: true,
     mockApi: 'https://mock.apifox.com/m1/4166690-0-default/'
   },
   prd: {
     baseApi: '/api',
     uploadApi: 'http://api-driver.marsview.cc',
     cdn: 'http://xxx.aliyun.com',
-    mock: false,
+    mock: true,
     mockApi: 'https://mock.apifox.com/m1/4166690-0-default/'
   }
 }

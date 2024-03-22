@@ -52,7 +52,7 @@ export default function TabsFC() {
     <Tabs
       activeKey={pathname}
       items={tabsList}
-      tabBarStyle={{ height: 40, marginBottom: 0, backgroundColor: '#fff' }}
+      tabBarStyle={{ height: 40, marginBottom: 0, backgroundColor: 'var(--dark-bg-color)' }}
       type='editable-card'
       hideAdd
       onChange={handleChange}

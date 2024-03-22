@@ -6,6 +6,7 @@ import { useLocation, useNavigate, useRouteLoaderData } from 'react-router-dom'
 import { Menu as IMenu } from '@/types/api'
 import * as Icons from '@ant-design/icons'
 import { IAuthLoader } from '@/router/AuthLoader'
+import { useStore } from '@/store'
 
 interface SideMenuProps {
   collapsed: boolean
@@ -56,6 +57,7 @@ const SideMenu: FC<SideMenuProps> = ({ collapsed }) => {
   const [menuList, setMenuList] = useState<MenuItem[]>([])
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
   const { pathname } = useLocation()
+  const isDark = useStore(state => state.isDark)
 
   useEffect(() => {
     const list = getTreeMenu(originMenuList.menuList || [])
@@ -73,17 +75,17 @@ const SideMenu: FC<SideMenuProps> = ({ collapsed }) => {
   }
 
   return (
-    <div>
+    <div className={styles.navSide}>
       <div className={styles.logo} onClick={handleClickLogo}>
         <img src='/imgs/logo.png' className={styles.img} />
         {collapsed ? '' : <span>yg-admin</span>}
       </div>
       <Menu
-        style={{ width: collapsed ? 80 : 'auto' }}
+        style={{ width: collapsed ? 80 : 'auto', height: 'calc(100vh - 50px)' }}
         selectedKeys={selectedKeys}
         mode='inline'
         items={menuList}
-        theme='dark'
+        theme={isDark ? 'light' : 'dark'}
         onClick={({ key }) => handleClickMenu(key)}
       />
     </div>

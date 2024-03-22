@@ -5,10 +5,14 @@ import type { MenuProps } from 'antd'
 import { useStore } from '@/store'
 import storage from '@/utils/storage'
 import Breadcrumb from './Breadcrumb'
+import { useEffect } from 'react'
 
 const NavHeader = () => {
-  const { userInfo, collapsed, updateCollapsed } = useStore()
+  const { userInfo, collapsed, updateCollapsed, isDark, updateTheme } = useStore()
 
+  useEffect(() => {
+    handleSwitch(isDark)
+  }, [])
   const menuList: MenuProps['items'] = [
     {
       key: 'email',
@@ -30,6 +34,17 @@ const NavHeader = () => {
   const toggleCollapsed = () => {
     updateCollapsed()
   }
+  const handleSwitch = (isDark: boolean) => {
+    if (isDark) {
+      document.documentElement.dataset.theme = 'dark'
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.dataset.theme = 'light'
+      document.documentElement.classList.remove('dark')
+    }
+    updateTheme(isDark)
+    storage.set('isDark', isDark)
+  }
   return (
     <div className={styles.navHeader}>
       <div className={styles.left}>
@@ -40,7 +55,13 @@ const NavHeader = () => {
         <Breadcrumb />
       </div>
       <div className={styles.right}>
-        <Switch checkedChildren='暗黑' unCheckedChildren='默认' style={{ marginRight: 10 }} />
+        <Switch
+          checked={isDark}
+          checkedChildren='暗黑'
+          unCheckedChildren='默认'
+          style={{ marginRight: 10 }}
+          onChange={handleSwitch}
+        />
         <Dropdown menu={{ items: menuList, onClick }} trigger={['click']}>
           <div className={styles.nickName}>{userInfo.userName}</div>
         </Dropdown>
